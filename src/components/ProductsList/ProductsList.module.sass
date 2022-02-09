@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&family=Rubik:wght@600&family=Spartan:wght@500;600;700&display=swap')
+@import '../../sass/_variables'
+@import '../../sass/_mixins'
+
+.contaner
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: space-between
+  
+  .item
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 32rem
+    background-color: $itemBackground
+    border-radius: 3rem
+    margin: 1rem 0
+    padding-top:2.5rem
+
+    img
+      height: 24.625rem
+
+    .discription
+      width: 27rem
+      text-align: center
+
+    button
+      @include blackButton
+      height: 4.25rem
+      width: 12.25rem
+      margin: 1.5rem 0
+      font-style: normal
+      font-weight: bold
+      font-size: 24px
+
+
+  

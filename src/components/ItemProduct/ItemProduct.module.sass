@@ -1,0 +1,63 @@
+@import '../../sass/_variables'
+@import '../../sass/_mixins'
+
+.wrapper
+  padding:  2rem 0
+  .contaner
+    height: 921px
+    background: $itemBackground
+    border-radius: 3rem
+    display: flex
+    justify-content: space-around
+    align-items: center
+    padding: 8.5rem
+    
+
+    .picture
+      flex-grow:1
+      // border: 1px solid red
+      img 
+        width: 605px
+      
+    .descAndOrder
+      display: flex
+      flex-direction: column
+      align-items: start
+      width: 37.5rem
+      flex-grow: 1
+        
+      h1
+        font-size: 4.875rem
+
+      p 
+        font-size: 1.5rem
+
+      .preOrder
+        position: relative
+        margin-top: 4rem
+
+        input
+          height: 5.25rem
+          width: 37.3rem
+          border-radius: 4.5rem
+          font-size: 1.5rem
+          border: 2px solid #D6D8E7
+          padding-left: 2rem
+        input:focus 
+          outline: 0
+          
+        button
+          @include blackButton
+          width: 15rem
+          height: 4.25rem
+          position: absolute
+          right: 0.5rem
+          top: 0.5rem
+          font-size: 1.5rem
+
+
+
+        
+
+      
+
