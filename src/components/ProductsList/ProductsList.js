@@ -1,15 +1,14 @@
-import { useRouter } from "next/router";
-import React from "react";
+import {useRouter} from "next/router";
+import React, { useCallback } from "react";
 
 import styles from "./ProductsList.module.sass";
 
-const Products = ({products, isLoading}) => {
+const ProductsList = ({products, isLoading}) => {
+  const history = useRouter();
 
-  const history = useRouter()
-
-  const handleGotoItem = (id) => {
-    history.push(`/product/${id}`)
-  }
+  const handleGotoItem = useCallback((id) => {
+    history.push(`/product/${id}`);
+  });
 
   return (
     <div className={styles.contaner}>
@@ -19,15 +18,15 @@ const Products = ({products, isLoading}) => {
           className={styles.item}
           onClick={() => handleGotoItem(product.id)}
         >
-          <img src={`https://react-test-starwars.vercel.app${product.image}`} />
+          <img src={`${process.env.API}${product.image}`} />
           <h1>{product.name}</h1>
           <div className={styles.discription}>{product.shortDescription}</div>
           <button>{`Buy $${product.price * 0.01}`}</button>
         </div>
       ))}
-       {isLoading && <div>loading....</div>}
+      {isLoading && <div>loading....</div>}
     </div>
   );
 };
 
-export default Products;
+export default ProductsList;

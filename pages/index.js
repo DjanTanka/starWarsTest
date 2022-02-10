@@ -38,8 +38,7 @@ const Home = () => {
       getProductsByPage();
     }
   }, [isScrollEnd]);
-// console.log('---products', products)
-// console.log('---err', err)
+  
   return (
     <div ref={ref} className={styles.wrapper}>
       <Header isProductList={true}/>

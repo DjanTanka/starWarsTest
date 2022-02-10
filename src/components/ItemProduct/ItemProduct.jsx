@@ -1,35 +1,48 @@
+import React, {useCallback, useState} from "react";
 import axios from "axios";
-import React, {useState} from "react";
-// import axios from "../../heplers/axios";
+
+import Popover from "../Popover/Popover";
+
 import {useStore} from "../../store";
+
 import styles from "./ItemProduct.module.sass";
+import {INCORRECT_MAIL, NO_MAIL} from "../../contants/Error";
 
 const ItemProduct = ({itemProdact}) => {
-  const {err, setErr} = useStore();
   const [email, setEmail] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const mailRegEx =
+    /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+  const {err, setErr} = useStore();
   const imgSrc = `${process.env.API}${itemProdact?.image}`;
   const handlePreOrder = async (id) => {
-    console.log("---id", id);
     if (email) {
-      const isEmailCorrect =
-        /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(
-          email
-        );
+      const isEmailCorrect = mailRegEx.test(email);
       if (!isEmailCorrect) {
-        setErr("incorrect email");
+        setErr(INCORRECT_MAIL);
       } else {
-
-      setErr("");
-      const {res} = await axios.post(`/api/create-order`, {
-        productId: id,
-        email,
-      });
-      console.log("---res", res);
+        setErr("");
+        try {
+          const {data} = await axios.post(`/api/create-order`, {
+            productId: id,
+            email,
+          });
+          setSuccess(data.data.message);
+        } catch (error) {
+          setErr(error?.message);
+        }
       }
     } else {
-      setErr("введите емэйл");
+      setErr(NO_MAIL);
     }
   };
+
+  const handleEmailChange = useCallback(
+    (e) => setEmail(e.target.value),
+    [setEmail]
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -38,14 +51,14 @@ const ItemProduct = ({itemProdact}) => {
           <img src={imgSrc} />
         </div>
         <div className={styles.descAndOrder}>
-          <h1>{itemProdact.name}</h1>
+          <h2>{itemProdact.name}</h2>
           <p>{itemProdact.description}</p>
           <div className={styles.preOrder}>
             <input
               type="email"
               placeholder="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleEmailChange}
             ></input>
             <button onClick={() => handlePreOrder(itemProdact.id)}>
               Pre-Order Now
@@ -53,6 +66,7 @@ const ItemProduct = ({itemProdact}) => {
           </div>
         </div>
       </div>
+      {success && <Popover success={success} setSuccess={setSuccess} />}
     </div>
   );
 };

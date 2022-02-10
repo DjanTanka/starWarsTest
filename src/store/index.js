@@ -1,11 +1,12 @@
 import {createContext, useContext, useState} from "react";
+import { WRONG } from "../contants/Error";
 
-const Store = createContext({});
+const StoreContext = createContext({});
 
 export function useStore() {
-  const store = useContext(Store);
+  const store = useContext(StoreContext);
   if (!store) {
-    throw new Error("Something wrong!");
+    throw new Error(WRONG);
   } else {
     return store;
   }
@@ -27,5 +28,5 @@ export default function StoreProvider(children) {
     err,
     setErr,
   };
-  return <Store.Provider value={value} {...children} />;
+  return <StoreContext.Provider value={value} {...children} />;
 }

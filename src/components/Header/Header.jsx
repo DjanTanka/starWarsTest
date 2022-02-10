@@ -1,11 +1,12 @@
 import React from "react";
+
 import styles from "./Header.module.sass";
 
 const Header = ({isProductList}) => {
   return (
     <div className={styles.contaner}>
-      <img src="/logo.png" />
-       {isProductList && (
+      <img src="/logo.png" alt="logo" />
+      {isProductList && (
         <>
           <div className={styles.productName}>Star Wars Figures</div>
           <div className={styles.description}>
