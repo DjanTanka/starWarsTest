@@ -3,7 +3,7 @@ import {useStore} from "../../src/store";
 import axios from "../../src/heplers/axios";
 import ItemProduct from "../../src/components/ItemProduct/ItemProduct";
 import {useRouter} from "next/router";
-import Products from "../../src/components/ProductsList/ProductsList";
+import ProductsList from "../../src/components/ProductsList/ProductsList";
 import styles from "./Id.module.sass";
 import Header from "../../src/components/Header/Header";
 import Popover from "../../src/components/Popover/Popover";
@@ -32,10 +32,10 @@ const Item = () => {
       <Header />
       {itemProduct.product && <ItemProduct itemProdact={itemProduct.product} />}
       {itemProduct.relatedProducts && (
-        <>
-          <h1>Related Figures</h1>
-          <Products products={itemProduct.relatedProducts} />
-        </>
+        <ProductsList
+          products={itemProduct.relatedProducts}
+          isItemProduct={true}
+        />
       )}
       {err && <Popover />}
     </div>

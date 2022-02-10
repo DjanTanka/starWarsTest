@@ -2,72 +2,73 @@
 @import '../../sass/_variables'
 @import '../../sass/_mixins'
 
-.contaner
+.wrapper
   display: flex
-  flex-direction: row
+  flex-direction: column
   flex-wrap: wrap
-  justify-content: space-around
-  
-  .item
-    display: flex
-    flex-direction: column
-    align-items: center
-    
-    width: 32rem
-    background-color: $itemBackground
-    border-radius: 3rem
-    margin: 1rem 0
-    padding-top:2.5rem
-
-    img
-      height: 24.625rem
-
-    .discription
-      width: 27rem
-      text-align: center
-      line-height: 154%
-      width: 27rem
-
-    button
-      @include blackButton
-      height: 4.25rem
-      width: 12.25rem
-      margin: 1.5rem 0
-      font-style: normal
-      font-weight: bold
-      font-size: 24px
-
-@media (max-width: 1400px) 
+ 
   .contaner
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: space-around
+
+
     .item
-      width: 26.5rem
+      display: flex
+      flex-direction: column
+      align-items: center
+      
+      width: 32rem
+      background-color: $itemBackground
+      border-radius: 3rem
+      margin: 1rem 0
+      padding-top:2.5rem
+
+      img
+        width: 80%
+
+      h1
+        text-align: center
 
       .discription
-        width: 21.5rem
+        width: 80%
+        text-align: center
+        line-height: 154%
+
+      button
+        @include blackButton
+        height: 4.25rem
+        width: 12.25rem
+        margin: 1.5rem 0
+        font-style: normal
+        font-weight: bold
+        font-size: 24px
+
+@media (max-width: 1400px) 
+  .wrapper
+    .contaner
+      .item
+        width: 26.5rem
+      
         
 @media (max-width: 980px) 
  .contaner
     .item
       width: 28.4rem
-      .discription
-        width: 23.375rem
+      
 
 @media (max-width: 768px) 
-  .contaner
-    .item
-      width: 22.25rem
-      img
+  .wrapper
+    align-items: center
+    .contaner
+      flex-direction: column
+      .item
         width: 22.25rem
-      .discription
-        width: 17.25rem
+      
         
 @media (max-width: 360px) 
-  .contaner
-    flex-direction: column
-    .item
-      max-width: 20.8125rem
-      img
-        max-width: 20.8125rem
-
-        
-  
+  .wrapper
+    .contaner
+      .item
+        width: 20.8125rem

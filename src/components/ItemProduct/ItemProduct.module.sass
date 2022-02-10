@@ -2,46 +2,57 @@
 @import '../../sass/_mixins'
 
 .wrapper
-  padding:  2rem 0
+  display: flex
+  justify-content: center
+  align-items: center
+  background: $itemBackground
+  width:83vw
+  border-radius: 3rem
+  
   .contaner
-    height: 921px
-    background: $itemBackground
-    border-radius: 3rem
+    width: 90%
+    padding: 8.5rem 0
 
     display: flex
-    justify-content: space-around
+    justify-content: center
     align-items: center
-
-    padding: 8.5rem
-    
+    flex-wrap: nowrap
 
     .picture
-      flex-grow:1
+      flex-basis: 0
+      flex-grow: 1
+      display: flex
+      justify-content: center
+      align-items: center
 
       img 
-        width: 605px
+        width: 100%
       
     .descAndOrder
       display: flex
       flex-direction: column
       align-items: start
       
-      width: 37.5rem
+    
+      flex-basis: 0
       flex-grow: 1
         
       h2
         font-size: 4.875rem
+        margin: 0
 
       p 
         font-size: 1.5rem
+        line-height: 142%
 
       .preOrder
         position: relative
         margin-top: 4rem
+        width: 100%
 
         input
           height: 5.25rem
-          width: 37.3rem
+          width: 90%
           border-radius: 4.5rem
           font-size: 1.5rem
           border: 2px solid #D6D8E7
@@ -51,9 +62,63 @@
           
         button
           @include blackButton
-          width: 15rem
+          width: 40%
           height: 4.25rem
           position: absolute
-          right: 0.5rem
+          right: 12%
           top: 0.5rem
           font-size: 1.5rem
+
+@media (max-width: 1400px) 
+   .wrapper
+    .contaner      
+      .descAndOrder
+        
+        .preOrder
+          input
+            width: 100%
+          button
+            top: 50%
+            transform: translate(25%, -50%)
+            font-size: 1rem
+
+@media (max-width: 980px) 
+  .wrapper
+    .contaner      
+      .descAndOrder
+        h2
+          font-size: 3rem
+        p 
+          font-size: 1rem
+
+        .preOrder
+          input
+            height: 4rem
+            font-size: 1.25rem
+            padding-left: 2rem
+           
+          button
+            height: 3.25rem
+
+@media (max-width: 360px) 
+  .wrapper
+    .contaner 
+      flex-direction: column  
+      padding: 3rem 0   
+      .descAndOrder
+        align-items: center
+        h2
+          text-align: center 
+          display: block
+          font-size: 2.5rem
+        p 
+          font-size: 0.75rem
+
+        .preOrder
+          input
+            height: 4rem
+            font-size: 1.25rem
+            padding-left: 2rem
+           
+          button
+            height: 3.25rem
