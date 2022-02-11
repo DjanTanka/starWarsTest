@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import Header from "../src/components/Header/Header";
 import ProductsList from "../src/components/ProductsList/ProductsList";
-import styles from './Index.module.sass'
+import styles from "./Index.module.sass";
 import axios from "../src/heplers/axios";
 import {useScrollEnd} from "../src/hooks/useScrollEnd";
 import {useStore} from "../src/store";
@@ -11,7 +11,7 @@ const Home = () => {
   const {products, setProducts, count, setCount, err, setErr} = useStore();
   const ref = useRef();
   const isScrollEnd = useScrollEnd(ref);
-  
+
   const [isLoading, setLoading] = useState(false);
 
   const getProductsByPage = async () => {
@@ -38,12 +38,12 @@ const Home = () => {
       getProductsByPage();
     }
   }, [isScrollEnd]);
-  
+
   return (
     <div ref={ref} className={styles.wrapper}>
-      <Header isProductList={true}/>
-      <ProductsList products={products} isLoading={isLoading}/>
-      {err && <Popover/>}
+      <Header isProductList={true} />
+      <ProductsList products={products} isLoading={isLoading} />
+      {err && <Popover />}
     </div>
   );
 };

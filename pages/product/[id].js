@@ -4,7 +4,7 @@ import axios from "../../src/heplers/axios";
 import ItemProduct from "../../src/components/ItemProduct/ItemProduct";
 import {useRouter} from "next/router";
 import ProductsList from "../../src/components/ProductsList/ProductsList";
-import styles from "./Id.module.sass";
+import styles from "../Index.module.sass";
 import Header from "../../src/components/Header/Header";
 import Popover from "../../src/components/Popover/Popover";
 

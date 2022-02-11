@@ -16,8 +16,8 @@ const ProductsList = ({products, isLoading, isItemProduct}) => {
       <div className={styles.contaner}>
         {products.map((product) => (
           <div
-            key={`${product.id}-${product.name}`}
             className={styles.item}
+            key={`${product.id}-${product.name}`}
             onClick={() => handleGotoItem(product.id)}
           >
             <img src={`${process.env.API}${product.image}`} />

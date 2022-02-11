@@ -6,14 +6,16 @@
   display: flex
   flex-direction: column
   flex-wrap: wrap
- 
+  width: 100%
+
   .contaner
     display: flex
     flex-direction: row
     flex-wrap: wrap
     justify-content: space-around
-
-
+    align-items: stretch
+    width: 100%
+    
     .item
       display: flex
       flex-direction: column
@@ -47,15 +49,20 @@
 
 @media (max-width: 1400px) 
   .wrapper
+    padding: 1rem
     .contaner
       .item
         width: 26.5rem
       
         
 @media (max-width: 980px) 
- .contaner
-    .item
-      width: 28.4rem
+  .wrapper
+    padding: 0
+    h1
+      text-align: center
+    .contaner
+      .item
+        width: 28.4rem
       
 
 @media (max-width: 768px) 
@@ -63,6 +70,7 @@
     align-items: center
     .contaner
       flex-direction: column
+      align-items: center
       .item
         width: 22.25rem
       
